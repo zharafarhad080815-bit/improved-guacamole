@@ -1,0 +1,76 @@
+<!--In this assignment, students will build an interactive My cat Cards webpage using JavaScript classes. They will create a cat class, use a constructor to store cat details, apply the this keyword to access object values, create multiple cat objects, and display each cat card by calling a class method.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cat Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5; /* Light background color */
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            font-size: 3em; /* Large heading */
+            text-align: center;
+            margin-top: 20px;
+        }
+        .card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Cat Cards</h1>
+    <button class="btn btn-primary" onclick="showCats()">Show Cats!</button>
+
+    <div class="card" id="catCard1"></div>
+    <div class="card" id="catCard2"></div>
+    <div class="card" id="catCard3"></div>
+    <div class="card" id="catCard4"></div>
+    <div class="card" id="catCard5"></div>
+    <div class="card" id="catCard6"></div>
+
+    <script>
+        class Cat {
+            constructor(name, breed, funFact) {
+                this.name = name;
+                this.breed = breed;
+                this.funFact = funFact;
+            }
+
+            displayCard(cardId) {
+                const card = document.getElementById(cardId);
+                card.innerHTML = `<h2>${this.name}</h2><p>Breed: ${this.breed}</p><p>Fun Fact: ${this.funFact}</p>`;
+            }
+        }
+
+        function showCats() {
+            const cats = [
+                new Cat("Whiskers", "Siamese", "Whiskers loves to chase laser pointers."),
+                new Cat("Mittens", "Maine Coon", "Mittens has a fluffy tail that she wraps around herself."),
+                new Cat("Shadow", "Persian", "Shadow enjoys lounging in sunny spots."),
+                new Cat("Luna", "Bengal", "Luna is very playful and loves to climb."),
+                new Cat("Simba", "British Shorthair", "Simba has a deep purr that can be heard from across the room."),
+                new Cat("Fluffy", "Ragdoll", "Fluffy is a gentle giant who loves to cuddle.")
+            ];
+
+            cats.forEach((cat, index) => {
+                cat.displayCard(`catCard${index + 1}`);
+            });
+        }
+    </script>
+</body>
+</html>
